@@ -35,7 +35,7 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "quotes": ["error", "double"],
-    "linebreak-style": 0,
+    "linebreak-style": "off",
     "react/jsx-filename-extension": [
       1,
       { "extensions": [".js", ".jsx", ".tsx"] }
@@ -44,7 +44,8 @@
     "no-debugger": "warn",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
-    "import/extensions": 0,
-    "comma-dangle": "off"
+    "import/extensions": "off",
+    "comma-dangle": "off",
+    "react/prop-types": "off"
   }
 }
