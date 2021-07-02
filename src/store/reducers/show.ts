@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Episode, ShowDetails } from "../../types";
 
+import { Episode, ShowDetails } from "../../types";
 import { TVMazeApi } from "../../utils/tvMazeApi";
 import { AppDispatch } from "../store";
 
@@ -46,7 +46,7 @@ export const showSlice = createSlice({
   },
 });
 
-export const {
+const {
   setShowLoading,
   setShowDetails,
   setShowError,
@@ -70,7 +70,7 @@ export const fetchShowDetails =
 export const fetchShowEpisodes =
   (id: string) => async (dispatch: AppDispatch) => {
     try {
-      dispatch(setShowLoading);
+      dispatch(setEpisodesLoading);
 
       const episodes = await TVMazeApi.getEpisodesByShowId(id);
 
