@@ -1,16 +1,23 @@
 import axios from "axios";
-import { ShowDetails } from "../types/ShowDetails";
+
+import { Episode, ShowDetails } from "../types";
 
 const axiosInstance = axios.create({
   baseURL: "http://api.tvmaze.com/",
 });
 
-const POWER_PUFF_GIRLS_IMDB_ID = "tt0175058";
-
 export abstract class TVMazeApi {
-  static async getShowByIMDBId(id: string = POWER_PUFF_GIRLS_IMDB_ID) {
+  static async getShowById(id: string) {
     const { data }: { data: ShowDetails } = await axiosInstance.get(
-      `lookup/shows?imdb=${id}`
+      `shows/${id}`
+    );
+
+    return data;
+  }
+
+  static async getEpisodesByShowId(id: string) {
+    const { data }: { data: Array<Episode> } = await axiosInstance.get(
+      `shows/${id}/episodes`
     );
 
     return data;

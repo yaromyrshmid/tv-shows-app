@@ -1,19 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Episode, ShowDetails } from "../../types";
 
-import { ShowDetails } from "../../types/ShowDetails";
 import { TVMazeApi } from "../../utils/tvMazeApi";
 import { AppDispatch } from "../store";
 
 interface ShowState {
   details: ShowDetails | null;
+  episodes: Array<Episode>;
   loading: boolean;
   error: string;
+  episodesLoading: boolean;
 }
 
 const initialState: ShowState = {
   details: null,
+  episodes: [],
   loading: false,
   error: "",
+  episodesLoading: false,
 };
 
 export const showSlice = createSlice({
@@ -29,23 +33,51 @@ export const showSlice = createSlice({
     },
     setShowError: (state, action: PayloadAction<string>) => {
       state.loading = false;
+      state.episodesLoading = false;
       state.error = action.payload;
+    },
+    setEpisodesLoading: (state) => {
+      state.episodesLoading = true;
+    },
+    setEpisodes: (state, action: PayloadAction<Array<Episode>>) => {
+      state.episodes = action.payload;
+      state.episodesLoading = false;
     },
   },
 });
 
-export const { setShowLoading, setShowDetails, setShowError } =
-  showSlice.actions;
+export const {
+  setShowLoading,
+  setShowDetails,
+  setShowError,
+  setEpisodesLoading,
+  setEpisodes,
+} = showSlice.actions;
 
-export const fetchShowDetails = () => async (dispatch: AppDispatch) => {
-  try {
-    dispatch(setShowLoading);
+export const fetchShowDetails =
+  (id: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(setShowLoading);
 
-    const details = await TVMazeApi.getShowByIMDBId();
-    dispatch(setShowDetails(details));
-  } catch (error) {
-    dispatch(setShowError(error.message));
-  }
-};
+      const details = await TVMazeApi.getShowById(id);
+
+      dispatch(setShowDetails(details));
+    } catch (error) {
+      dispatch(setShowError(error.message));
+    }
+  };
+
+export const fetchShowEpisodes =
+  (id: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(setShowLoading);
+
+      const episodes = await TVMazeApi.getEpisodesByShowId(id);
+
+      dispatch(setEpisodes(episodes));
+    } catch (error) {
+      dispatch(setShowError(error.message));
+    }
+  };
 
 export default showSlice.reducer;

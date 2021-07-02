@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 
+import { POWER_PUFF_GIRLS_ID } from "../constants/SHOW";
 import { useAppDispatch } from "../store/hooks";
-import { fetchShowDetails } from "../store/reducers/show";
+import { fetchShowDetails, fetchShowEpisodes } from "../store/reducers/show";
 
 const ShowPage: React.FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchShowDetails());
+    dispatch(fetchShowDetails(POWER_PUFF_GIRLS_ID));
+    dispatch(fetchShowEpisodes(POWER_PUFF_GIRLS_ID));
   }, []);
 
   return (
