@@ -46,6 +46,9 @@
     "@typescript-eslint/no-use-before-define": ["error"],
     "import/extensions": "off",
     "comma-dangle": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "no-param-reassign": "off",
+    "import/prefer-default-export": "off",
+    "operator-linebreak": "off"
   }
 }
