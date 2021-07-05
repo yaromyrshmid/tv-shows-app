@@ -1,12 +1,12 @@
 import React from "react";
-import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
 
 import App from "./App";
 
 describe("App", () => {
   it("Renders", () => {
-    const app = shallow(<App />);
+    const tree = renderer.create(<App />).toJSON();
 
-    expect(app.exists()).toEqual(true);
+    expect(tree).toMatchSnapshot();
   });
 });
