@@ -14,7 +14,9 @@
     "expect": true,
     "jsdom": true,
     "JSX": true,
-    "test": true
+    "test": true,
+    "describe": true,
+    "it": true
   },
   "extends": ["plugin:react/recommended", "airbnb"],
   "parser": "@typescript-eslint/parser",
@@ -53,6 +55,7 @@
     "implicit-arrow-linebreak": "off",
     "import/no-unresolved": "off",
     "no-unused-vars": "warn",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }
