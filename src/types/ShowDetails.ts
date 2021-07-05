@@ -8,6 +8,10 @@ export type ShowDetails = {
   language: string;
   name: string;
   premiered: string;
+  network: {
+    id: number;
+    name: string;
+  };
   rating: { average: number };
   runtime: string;
   status: string;

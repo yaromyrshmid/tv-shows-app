@@ -1,7 +1,8 @@
 $primary: #c1555a
-$secondary: #ca621d
+$secondary: #d1a180
 $textPrimary: #393939
 $textSecondary: #979797
+$textWhite: #ffffff
 $error: #fc4747
   
 @mixin breakpoint($point) 
@@ -17,15 +18,3 @@ $error: #fc4747
   @else if $point == xl 
     @media (min-width: 1920px)  
       @content  
-
-
-body 
-  margin: 0
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-  color: $textPrimary
-
-code 
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace
-
