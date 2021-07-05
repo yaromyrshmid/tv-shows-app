@@ -9,7 +9,7 @@ const Routes: React.FC = (): JSX.Element => (
   <BrowserRouter>
     <Layout>
       <Switch>
-        <Route path="/show/:showId/season/:seasonNumber/episode/:episodeNumber">
+        <Route path="/show/:showId/s/:seasonNumber/e/:episodeNumber">
           <EpisodePage />
         </Route>
         <Route path="/">
