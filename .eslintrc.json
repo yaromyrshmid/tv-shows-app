@@ -16,7 +16,9 @@
     "JSX": true,
     "test": true,
     "describe": true,
-    "it": true
+    "it": true,
+    "beforeEach": true,
+    "afterEach": true
   },
   "extends": ["plugin:react/recommended", "airbnb"],
   "parser": "@typescript-eslint/parser",

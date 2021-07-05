@@ -44,7 +44,7 @@ export const showSlice = createSlice({
   },
 });
 
-const {
+export const {
   setShowLoading,
   setShowDetails,
   setHideLoading,
