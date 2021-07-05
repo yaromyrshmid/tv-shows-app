@@ -1,0 +1,20 @@
+$primary: #c1555a
+$secondary: #d1a180
+$textPrimary: #393939
+$textSecondary: #979797
+$textWhite: #ffffff
+$error: #fc4747
+  
+@mixin breakpoint($point) 
+  @if $point == sm 
+    @media (min-width: 600px) 
+      @content  
+  @else if $point == md 
+    @media (min-width: 960px) 
+      @content  
+  @else if $point == lg 
+    @media (min-width: 1280px) 
+      @content  
+  @else if $point == xl 
+    @media (min-width: 1920px)  
+      @content  

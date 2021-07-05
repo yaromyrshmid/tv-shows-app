@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chip component Matches snapshot 1`] = `
+<span
+  className="chip chip-primary"
+>
+  test
+</span>
+`;

@@ -1,0 +1,18 @@
+@import "~theme"
+    
+.episodes-container
+    display: flex
+    flex-wrap: wrap
+    gap: 8px
+
+.episode-link 
+    width: calc( 50% - 4px )
+    text-decoration: none 
+
+@include breakpoint(sm)
+    .episode-link 
+        width: calc( 25% - 8px )
+
+@include breakpoint(md)
+    .episode-link 
+        width: calc( 20% - 8px )
