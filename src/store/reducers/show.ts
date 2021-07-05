@@ -3,12 +3,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Episode, ShowDetails } from "../../types";
 import { TVMazeApi } from "../../utils/tvMazeApi";
 import { AppDispatch } from "../store";
+import { setError } from "./error";
 
 interface ShowState {
   details: ShowDetails | null;
   episodes: Array<Episode>;
   loading: boolean;
-  error: string;
   episodesLoading: boolean;
 }
 
@@ -16,7 +16,6 @@ const initialState: ShowState = {
   details: null,
   episodes: [],
   loading: false,
-  error: "",
   episodesLoading: false,
 };
 
@@ -31,10 +30,9 @@ export const showSlice = createSlice({
       state.details = action.payload;
       state.loading = false;
     },
-    setShowError: (state, action: PayloadAction<string>) => {
+    setHideLoading: (state) => {
       state.loading = false;
       state.episodesLoading = false;
-      state.error = action.payload;
     },
     setEpisodesLoading: (state) => {
       state.episodesLoading = true;
@@ -49,7 +47,7 @@ export const showSlice = createSlice({
 const {
   setShowLoading,
   setShowDetails,
-  setShowError,
+  setHideLoading,
   setEpisodesLoading,
   setEpisodes,
 } = showSlice.actions;
@@ -63,7 +61,8 @@ export const fetchShowDetails =
 
       dispatch(setShowDetails(details));
     } catch (error) {
-      dispatch(setShowError(error.message));
+      dispatch(setHideLoading());
+      dispatch(setError(error.message));
     }
   };
 
@@ -76,7 +75,8 @@ export const fetchShowEpisodes =
 
       dispatch(setEpisodes(episodes));
     } catch (error) {
-      dispatch(setShowError(error.message));
+      dispatch(setHideLoading());
+      dispatch(setError(error.message));
     }
   };
 

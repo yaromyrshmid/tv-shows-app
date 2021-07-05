@@ -8,7 +8,6 @@ import reducer, {
   clearEpisodeDetails,
   fetchEpisodeDetails,
   setEpisodeDetails,
-  setEpisodeError,
   setEpisodeLoading,
 } from "./episode";
 
@@ -23,7 +22,6 @@ describe("Episode reducer", () => {
     expect(reducer(undefined, { type: "default" })).toEqual({
       details: null,
       loading: false,
-      error: "",
     });
   });
 
@@ -31,7 +29,6 @@ describe("Episode reducer", () => {
     expect(reducer(undefined, setEpisodeLoading())).toEqual({
       details: null,
       loading: true,
-      error: "",
     });
   });
 
@@ -41,17 +38,6 @@ describe("Episode reducer", () => {
     expect(reducer(undefined, setEpisodeDetails(mockEpisode))).toEqual({
       details: mockEpisode,
       loading: false,
-      error: "",
-    });
-  });
-
-  test("Should set episode error", () => {
-    const testError = "Test error";
-
-    expect(reducer(undefined, setEpisodeError(testError))).toEqual({
-      details: null,
-      loading: false,
-      error: testError,
     });
   });
 
@@ -59,7 +45,6 @@ describe("Episode reducer", () => {
     expect(reducer(undefined, clearEpisodeDetails())).toEqual({
       details: null,
       loading: false,
-      error: "",
     });
   });
 
@@ -85,7 +70,6 @@ describe("Episode reducer", () => {
         episode: {
           details: mockEpisode,
           loading: false,
-          error: "",
         },
       });
 
@@ -112,10 +96,8 @@ describe("Episode reducer", () => {
         const newState = testStore.getState();
 
         expect(newState).toEqual({
-          episode: {
-            details: null,
-            loading: false,
-            error: error.message,
+          error: {
+            message: error.message,
           },
         });
 
