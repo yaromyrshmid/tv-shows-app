@@ -1,15 +1,17 @@
 import React from "react";
-import Header from "./Header/Header";
+
+import Header from "../Header";
+import "./styles.sass";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }): JSX.Element => (
-  <div>
+  <>
     <Header />
-    <div>{children}</div>
-  </div>
+    <div className="layout-container">{children}</div>
+  </>
 );
 
 export default Layout;
