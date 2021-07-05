@@ -9,6 +9,7 @@ import reducer, {
   fetchEpisodeDetails,
   setEpisodeDetails,
   setEpisodeLoading,
+  setHideLoading,
 } from "./episode";
 
 const testStore = configureStore({
@@ -43,6 +44,13 @@ describe("Episode reducer", () => {
 
   test("Should clear episode state", () => {
     expect(reducer(undefined, clearEpisodeDetails())).toEqual({
+      details: null,
+      loading: false,
+    });
+  });
+
+  test("Should set loading to false", () => {
+    expect(reducer(undefined, setHideLoading())).toEqual({
       details: null,
       loading: false,
     });
