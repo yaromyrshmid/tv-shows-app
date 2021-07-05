@@ -57,7 +57,7 @@ const {
 export const fetchShowDetails =
   (id: string) => async (dispatch: AppDispatch) => {
     try {
-      dispatch(setShowLoading);
+      dispatch(setShowLoading());
 
       const details = await TVMazeApi.getShowById(id);
 
@@ -70,7 +70,7 @@ export const fetchShowDetails =
 export const fetchShowEpisodes =
   (id: string) => async (dispatch: AppDispatch) => {
     try {
-      dispatch(setEpisodesLoading);
+      dispatch(setEpisodesLoading());
 
       const episodes = await TVMazeApi.getEpisodesByShowId(id);
 
