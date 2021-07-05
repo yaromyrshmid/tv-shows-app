@@ -14,9 +14,11 @@ const ShowPage: React.FC = (): JSX.Element => {
   );
 
   useEffect(() => {
-    dispatch(fetchShowDetails(POWER_PUFF_GIRLS_ID));
-    dispatch(fetchShowEpisodes(POWER_PUFF_GIRLS_ID));
-  }, []);
+    if (!details) {
+      dispatch(fetchShowDetails(POWER_PUFF_GIRLS_ID));
+      dispatch(fetchShowEpisodes(POWER_PUFF_GIRLS_ID));
+    }
+  }, [details]);
 
   if (loading || episodesLoading) return <Spinner />;
 

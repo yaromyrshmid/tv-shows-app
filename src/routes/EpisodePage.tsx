@@ -3,7 +3,10 @@ import { useParams } from "react-router-dom";
 
 import EpisodeDetails from "components/episode/EpisodeDetails";
 import { useAppDispatch, useAppSelector } from "store/hooks";
-import { fetchEpisodeDetails } from "store/reducers/episode";
+import {
+  clearEpisodeDetails,
+  fetchEpisodeDetails,
+} from "store/reducers/episode";
 import { IEpisodeParams } from "utils/tvMazeApi";
 import Spinner from "components/ui/Spinner";
 
@@ -14,6 +17,10 @@ const EpisodePage: React.FC = (): JSX.Element => {
 
   useEffect(() => {
     dispatch(fetchEpisodeDetails(episodeParams));
+
+    return () => {
+      dispatch(clearEpisodeDetails());
+    };
   }, [episodeParams]);
 
   if (loading) return <Spinner />;

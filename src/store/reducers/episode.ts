@@ -31,11 +31,16 @@ export const episodeSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    clearEpisodeDetails: () => initialState,
   },
 });
 
-export const { setEpisodeLoading, setEpisodeDetails, setEpisodeError } =
-  episodeSlice.actions;
+export const {
+  setEpisodeLoading,
+  setEpisodeDetails,
+  setEpisodeError,
+  clearEpisodeDetails,
+} = episodeSlice.actions;
 
 export const fetchEpisodeDetails =
   (params: IEpisodeParams) => async (dispatch: AppDispatch) => {
