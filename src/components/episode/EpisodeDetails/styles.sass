@@ -1,0 +1,24 @@
+@import "~theme"
+
+.episode-content
+    padding: 24px 0
+
+    h1
+        color: $primary
+        margin-bottom: 8px
+        margin-top: 0
+
+    &-secondary
+        display: flex
+        flex-direction: column
+        gap: 8px
+
+        .cover 
+            width: calc(min(300px, 100%))
+            align-self: center
+
+  
+@include breakpoint(sm)
+    .episode-content-secondary
+            flex-direction: row
+            align-items: center

@@ -44,10 +44,10 @@ const ShowEpisodes: React.FC<ShowEpisodesProps> = ({
 
             <div className="episodes-container">
               {episodesBySeason[season].map(
-                ({ name, id, image: { medium: image } }) => (
+                ({ name, id, image: { medium: image }, number }) => (
                   <Link
                     key={id}
-                    to={`/show/${showId}/s/${season}/e/${id}`}
+                    to={`/show/${showId}/s/${season}/e/${number}`}
                     className="episode-link"
                   >
                     <Card title={name} key={id} image={image} />

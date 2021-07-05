@@ -1,6 +1,6 @@
-import Chip from "components/ui/Chip";
 import React from "react";
 
+import Chip from "components/ui/Chip";
 import { ShowDetails } from "types";
 import "./styles.sass";
 

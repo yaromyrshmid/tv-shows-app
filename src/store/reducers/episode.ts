@@ -40,7 +40,7 @@ export const { setEpisodeLoading, setEpisodeDetails, setEpisodeError } =
 export const fetchEpisodeDetails =
   (params: IEpisodeParams) => async (dispatch: AppDispatch) => {
     try {
-      dispatch(setEpisodeLoading);
+      dispatch(setEpisodeLoading());
 
       const details = await TVMazeApi.getEpisode(params);
 

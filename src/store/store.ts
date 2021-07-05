@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import showReducer from "./reducers/show";
+import episodeReducer from "./reducers/episode";
 
 const store = configureStore({
   reducer: {
     show: showReducer,
+    episode: episodeReducer,
   },
 });
 
